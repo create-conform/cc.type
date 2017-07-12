@@ -105,7 +105,7 @@
                 for (var i = 0; i < this.length; ++i) { 
                     view[i] = this[i];
                 } 
-                return ab;
+                return view;
             } 
         }
     }
