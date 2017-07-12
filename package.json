@@ -1,6 +1,6 @@
 {
   "name": "cc.type",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "title": "Type Module",
   "description": "Library for working with primitives.",
   "main": "type.js"

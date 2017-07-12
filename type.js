@@ -94,9 +94,20 @@
             return Buffer.from(this);
         };
 
-        Buffer.prototype.toUint8Array = function () {
-            return new Uint8Array(this.buffer, this.byteOffset, this.byteLength);
-        };
+        Buffer.prototype.toUint8Array = function() { 
+            if (this.buffer)
+            { 
+                return new Uint8Array(this.buffer, this.byteOffset, this.byteLength);
+            } 
+            else { 
+                var ab = new ArrayBuffer(this.length);
+                var view = new Uint8Array(ab);
+                for (var i = 0; i < this.length; ++i) { 
+                    view[i] = this[i];
+                } 
+                return ab;
+            } 
+        }
     }
 
     var singleton;
