@@ -71,6 +71,45 @@
         this.isPrimitive = function (obj) {
             return self.isString(obj) || self.isNumber(obj) || self.isBoolean(obj);
         };
+        this.getProperty = function(obj, property) {
+            var args = property.split(".");
+            if (args.length == 0) {
+                return null;
+            }
+            if (obj == null) {
+                if (typeof window !== "undefined") {
+                    obj = ((window.frameElement != null ? window.frameElement.contentWindow : null) || window || this);
+                } else {
+                    obj = this;
+                }
+            }
+            var val = obj[args[0]];
+            if (args.length > 1) {
+                return getProperty(val, property.substr(args[0].length + 1));
+            }
+            else {
+                return val;
+            }
+        };
+        this.setProperty = function(obj, property, value) {
+            var args = property.split(".");
+            if (args.length == 0) {
+                return null;
+            }
+            if (obj == null) {
+                if (typeof window !== "undefined") {
+                    obj = ((window.frameElement != null ? window.frameElement.contentWindow : null) || window || this);
+                } else {
+                    obj = this;
+                }
+            }
+            if (args.length > 1) {
+                return setProperty(obj[args[0]], property.substr(args[0].length + 1), value);
+            }
+            else {
+                obj[args[0]] = value;
+            }
+        };
     }
 
     String.prototype.toUint8Array = function () {
