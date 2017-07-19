@@ -85,7 +85,7 @@
             }
             var val = obj[args[0]];
             if (args.length > 1) {
-                return getProperty(val, property.substr(args[0].length + 1));
+                return self.getProperty(val, property.substr(args[0].length + 1));
             }
             else {
                 return val;
@@ -104,7 +104,7 @@
                 }
             }
             if (args.length > 1) {
-                return setProperty(obj[args[0]], property.substr(args[0].length + 1), value);
+                return self.setProperty(obj[args[0]], property.substr(args[0].length + 1), value);
             }
             else {
                 obj[args[0]] = value;
