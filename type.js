@@ -116,7 +116,7 @@
             * Note: This method will return a new merged object, Source1 and Source2 original values will not be replaced.
             * */
             //var mergedJSON = Object.create(source2);// Copying Source2 to a new Object
-            var mergedJSON = self.copy(source2);
+            var mergedJSON = self.clone(source2);
 
             for (var attrname in source1) {
                 if(mergedJSON.hasOwnProperty(attrname)) {
